@@ -49,7 +49,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @ConditionalOnClass({ AppDeployer.class, TaskLauncher.class })
 public class YarnDeployerAutoConfiguration {
 
-	@Value("${spring.cloud.dataflow.yarn.version}")
+	@Value("${spring.cloud.dataflow.yarn.version:}")
 	private String dataflowVersion;
 
 	@Bean

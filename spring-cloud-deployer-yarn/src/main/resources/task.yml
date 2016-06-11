@@ -9,6 +9,7 @@ spring:
     dataflow:
       yarn:
         version: "@project.version@"
+        deployerversion: "@project.version@"
   yarn:
     appType: DATAFLOW
     applicationBaseDir: /dataflow/apps/task/
