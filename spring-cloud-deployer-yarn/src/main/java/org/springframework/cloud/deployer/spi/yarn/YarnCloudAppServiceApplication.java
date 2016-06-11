@@ -99,6 +99,9 @@ public class YarnCloudAppServiceApplication implements InitializingBean, Disposa
 		}
 		if (StringUtils.hasText(dataflowVersion)) {
 			appProperties.setProperty("spring.cloud.deployer.yarn.version", dataflowVersion);
+			// XXX
+			appProperties.setProperty("spring.cloud.dataflow.yarn.deployerversion", dataflowVersion);
+			//
 		}
 		if (StringUtils.hasText(configFileName) && configFileProperties != null) {
 			configFilesContents.put(configFileName, configFileProperties);

@@ -363,7 +363,18 @@ public class TaskLauncherIT extends AbstractCliBootYarnClusterTests {
 			ApplicationContextInitializer<?>[] initializers = new ApplicationContextInitializer<?>[] {
 					new HadoopConfigurationInjectingInitializer(configuration) };
 			String dataflowVersion = environment.getProperty("projectVersion");
-			return new DefaultYarnCloudAppService(dataflowVersion, initializers);
+//			return new DefaultYarnCloudAppService(dataflowVersion, initializers);
+			return new DefaultYarnCloudAppService(dataflowVersion, initializers) {
+				@Override
+				protected List<String> processContextRunArgs(List<String> contextRunArgs) {
+					List<String> newArgs = new ArrayList<>();
+					if (contextRunArgs != null) {
+						newArgs.addAll(contextRunArgs);
+					}
+					newArgs.add("--dataflow.yarn.app.appmaster.path=target/spring-cloud-deployer-yarn-build-tests");
+					return newArgs;
+				}
+			};
 		}
 	}
 }

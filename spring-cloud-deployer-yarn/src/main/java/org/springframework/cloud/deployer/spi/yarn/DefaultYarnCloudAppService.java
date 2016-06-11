@@ -210,12 +210,17 @@ public class DefaultYarnCloudAppService implements YarnCloudAppService, Initiali
 		return states;
 	}
 
+	protected List<String> processContextRunArgs(List<String> contextRunArgs) {
+		return contextRunArgs;
+	}
+
 	private synchronized YarnCloudAppServiceApplication getApp(String appVersion, String dataflowVersion, CloudAppType cloudAppType) {
 		return getApp(appVersion, dataflowVersion, cloudAppType, null);
 	}
 
 	private synchronized YarnCloudAppServiceApplication getApp(String appVersion, String dataflowVersion, CloudAppType cloudAppType,
 			List<String> contextRunArgs) {
+		contextRunArgs = processContextRunArgs(contextRunArgs);
 		String cacheKey = cloudAppType + appVersion + StringUtils.collectionToCommaDelimitedString(contextRunArgs);
 		YarnCloudAppServiceApplication app = appCache.get(cacheKey);
 		logger.info("Cachekey {} found YarnCloudAppServiceApplication {}", cacheKey, app);
@@ -226,12 +231,16 @@ public class DefaultYarnCloudAppService implements YarnCloudAppService, Initiali
 			}
 			if (StringUtils.hasText(dataflowVersion)) {
 				configFileProperties.setProperty("spring.cloud.deployer.yarn.version", dataflowVersion);
+				// XXX
+				configFileProperties.setProperty("spring.cloud.dataflow.yarn.deployerversion", dataflowVersion);
+				//
 			}
 
 			logger.info("Bootsrapping YarnCloudAppServiceApplication with {}", cloudAppType.toString().toLowerCase());
 			ArrayList<String> runArgs = new ArrayList<String>();
 			runArgs.add("--spring.config.name=" + cloudAppType.toString().toLowerCase());
 			runArgs.add("--spring.jmx.enabled=false");
+
 			if (!ObjectUtils.isEmpty(contextRunArgs)) {
 				runArgs.addAll(contextRunArgs);
 			}
