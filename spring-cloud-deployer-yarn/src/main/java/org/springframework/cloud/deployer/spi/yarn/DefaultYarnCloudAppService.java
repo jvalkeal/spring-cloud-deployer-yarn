@@ -231,9 +231,6 @@ public class DefaultYarnCloudAppService implements YarnCloudAppService, Initiali
 			}
 			if (StringUtils.hasText(dataflowVersion)) {
 				configFileProperties.setProperty("spring.cloud.deployer.yarn.version", dataflowVersion);
-				// XXX
-				configFileProperties.setProperty("spring.cloud.dataflow.yarn.deployerversion", dataflowVersion);
-				//
 			}
 
 			logger.info("Bootsrapping YarnCloudAppServiceApplication with {}", cloudAppType.toString().toLowerCase());

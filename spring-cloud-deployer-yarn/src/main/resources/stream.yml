@@ -6,7 +6,7 @@ spring:
   main:
     show_banner: false
   cloud:
-    dataflow:
+    deployer:
       yarn:
         version: "@project.version@"
   yarn:
@@ -23,7 +23,7 @@ spring:
       launchcontext:
         arguments:
           -Dspring.config.location: servers.yml
-        archiveFile: spring-cloud-deployer-yarn-appdeployerappmaster-${spring.cloud.dataflow.yarn.deployerversion}.jar
+        archiveFile: spring-cloud-deployer-yarn-appdeployerappmaster-${spring.cloud.deployer.yarn.version}.jar
       localizer:
         patterns:
           - "spring-cloud-deployer-yarn-appdeployerappmaster-*.jar"
