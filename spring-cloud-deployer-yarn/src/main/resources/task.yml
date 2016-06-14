@@ -13,6 +13,7 @@ spring:
     appType: DATAFLOW
     applicationBaseDir: /dataflow/apps/task/
     client:
+      enabled: true
       clientClass: org.springframework.yarn.client.DefaultApplicationYarnClient
       files:
         - "file:${dataflow.yarn.app.appmaster.path:lib}/spring-cloud-deployer-yarn-tasklauncherappmaster-*.jar"
@@ -32,3 +33,5 @@ spring:
       resource:
         memory: ${dataflow.yarn.app.taskappmaster.memory:512m}
         virtualCores: ${dataflow.yarn.app.taskappmaster.virtualCores:1}
+    container:
+      enabled: false
