@@ -1,6 +1,3 @@
-logging:
-  level:
-    org.springframework.yarn: DEBUG
 server:
   port: 0
 endpoints:
