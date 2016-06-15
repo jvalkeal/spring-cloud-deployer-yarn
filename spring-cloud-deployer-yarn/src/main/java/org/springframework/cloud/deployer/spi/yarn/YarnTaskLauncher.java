@@ -109,9 +109,9 @@ public class YarnTaskLauncher implements TaskLauncher {
 
 		// deployment properties override servers.yml which overrides application.yml
 		for (Entry<String, String> entry : environmentProperties.entrySet()) {
-			if (entry.getKey().startsWith("dataflow.yarn.app.taskcontainer")) {
+			if (entry.getKey().startsWith("deployer.yarn.app.taskcontainer")) {
 				contextRunArgs.add("--spring.yarn.client.launchcontext.arguments.--" + entry.getKey() + "=" + entry.getValue());
-			} else if (entry.getKey().startsWith("dataflow.yarn.app.taskappmaster")) {
+			} else if (entry.getKey().startsWith("deployer.yarn.app.taskappmaster")) {
 				contextRunArgs.add("--" + entry.getKey() + "=" + entry.getValue());
 			}
 		}

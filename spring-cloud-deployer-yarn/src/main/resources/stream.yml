@@ -12,10 +12,10 @@ spring:
     client:
       clientClass: org.springframework.yarn.client.DefaultApplicationYarnClient
       files:
-        - "file:${dataflow.yarn.app.appmaster.path:lib}/spring-cloud-deployer-yarn-appdeployerappmaster-*.jar"
-        - "file:${dataflow.yarn.app.config.path:config}/servers.yml*"
-      queue: ${dataflow.yarn.app.streamappmaster.queue:default}
-      labelExpression: ${dataflow.yarn.app.streamappmaster.labelExpression:}
+        - "file:${deployer.yarn.app.appmaster.path:lib}/spring-cloud-deployer-yarn-appdeployerappmaster-*.jar"
+        - "file:${deployer.yarn.app.config.path:config}/servers.yml*"
+      queue: ${deployer.yarn.app.streamappmaster.queue:default}
+      labelExpression: ${deployer.yarn.app.streamappmaster.labelExpression:}
       launchcontext:
         arguments:
           -Dspring.config.location: servers.yml
@@ -25,5 +25,5 @@ spring:
           - "spring-cloud-deployer-yarn-appdeployerappmaster-*.jar"
           - "servers.yml"
       resource:
-        memory: ${dataflow.yarn.app.streamappmaster.memory:512m}
-        virtualCores: ${dataflow.yarn.app.streamappmaster.virtualCores:1}
+        memory: ${deployer.yarn.app.streamappmaster.memory:512m}
+        virtualCores: ${deployer.yarn.app.streamappmaster.virtualCores:1}

@@ -100,9 +100,9 @@ public class YarnAppDeployer implements AppDeployer {
 
 		// deployment properties override servers.yml which overrides application.yml
 		for (Entry<String, String> entry : environmentProperties.entrySet()) {
-			if (entry.getKey().startsWith("dataflow.yarn.app.streamappmaster")) {
+			if (entry.getKey().startsWith("deployer.yarn.app.streamappmaster")) {
 				contextRunArgs.add("--" + entry.getKey() + "=" + entry.getValue());
-			} else if (entry.getKey().startsWith("dataflow.yarn.app.streamcontainer")) {
+			} else if (entry.getKey().startsWith("deployer.yarn.app.streamcontainer")) {
 				// weird format with '--' is just straight pass to appmaster
 				contextRunArgs.add("--spring.yarn.client.launchcontext.arguments.--" + entry.getKey() + "=" + entry.getValue());
 			}
