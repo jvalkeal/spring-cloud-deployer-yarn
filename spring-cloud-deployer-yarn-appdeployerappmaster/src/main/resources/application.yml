@@ -12,7 +12,7 @@ spring:
         version: "@project.version@"
   yarn:
     appName: spring-cloud-dataflow-yarn-app
-    applicationBaseDir: /dataflow/apps/stream/
+    applicationBaseDir: ${deployer.yarn.app.baseDir:/dataflow}/apps/stream/
     appmaster:
       appmasterClass: org.springframework.cloud.deployer.spi.yarn.appdeployer.StreamAppmaster
       keepContextAlive: true

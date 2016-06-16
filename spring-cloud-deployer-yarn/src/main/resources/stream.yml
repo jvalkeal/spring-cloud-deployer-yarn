@@ -8,7 +8,7 @@ spring:
   yarn:
     appType: DATAFLOW
     appName: scdstream:app
-    applicationBaseDir: /dataflow/apps/stream/
+    applicationBaseDir: ${deployer.yarn.app.baseDir:/dataflow}/apps/stream/
     client:
       clientClass: org.springframework.yarn.client.DefaultApplicationYarnClient
       files:
