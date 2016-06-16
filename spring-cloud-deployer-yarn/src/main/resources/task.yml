@@ -7,7 +7,7 @@ spring:
         version: "@project.version@"
   yarn:
     appType: DATAFLOW
-    applicationBaseDir: /dataflow/apps/task/
+    applicationBaseDir: ${deployer.yarn.app.baseDir:/dataflow}/apps/task/
     client:
       enabled: true
       clientClass: org.springframework.yarn.client.DefaultApplicationYarnClient

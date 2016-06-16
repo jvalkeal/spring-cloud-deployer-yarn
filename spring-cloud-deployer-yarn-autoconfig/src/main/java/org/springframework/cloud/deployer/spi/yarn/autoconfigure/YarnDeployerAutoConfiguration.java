@@ -17,11 +17,13 @@
 package org.springframework.cloud.deployer.spi.yarn.autoconfigure;
 
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.deployer.spi.app.AppDeployer;
 import org.springframework.cloud.deployer.spi.task.TaskLauncher;
 import org.springframework.cloud.deployer.spi.yarn.AppDeployerStateMachine;
@@ -29,6 +31,7 @@ import org.springframework.cloud.deployer.spi.yarn.DefaultYarnCloudAppService;
 import org.springframework.cloud.deployer.spi.yarn.TaskLauncherStateMachine;
 import org.springframework.cloud.deployer.spi.yarn.YarnAppDeployer;
 import org.springframework.cloud.deployer.spi.yarn.YarnCloudAppService;
+import org.springframework.cloud.deployer.spi.yarn.YarnDeployerProperties;
 import org.springframework.cloud.deployer.spi.yarn.YarnTaskLauncher;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -47,6 +50,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @Configuration
 @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE)
 @ConditionalOnClass({ AppDeployer.class, TaskLauncher.class })
+@EnableConfigurationProperties({ YarnDeployerProperties.class })
 public class YarnDeployerAutoConfiguration {
 
 	@Value("${spring.cloud.dataflow.yarn.version:}")

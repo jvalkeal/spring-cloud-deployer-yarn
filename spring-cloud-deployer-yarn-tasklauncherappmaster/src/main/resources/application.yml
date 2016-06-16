@@ -11,7 +11,7 @@ spring:
       yarn:
         version: "@project.version@"
   yarn:
-    applicationBaseDir: /dataflow/apps/task/
+    applicationBaseDir: ${deployer.yarn.app.baseDir:/dataflow}/apps/task/
     appmaster:
       containerCount: 1
       appmasterClass: org.springframework.cloud.deployer.spi.yarn.tasklauncher.TaskAppmaster
